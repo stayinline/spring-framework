@@ -160,6 +160,9 @@ public abstract class AbstractSingletonProxyFactoryBean extends ProxyConfig
 
 		ProxyFactory proxyFactory = new ProxyFactory();
 
+
+		// 使用 ProxyFactory 完成 AOP的基本功能，ProxyFactory 提供 proxy对象
+		// 并将 TransactionIntercepter 设为 target方法调用的拦截器
 		if (this.preInterceptors != null) {
 			for (Object interceptor : this.preInterceptors) {
 				proxyFactory.addAdvisor(this.advisorAdapterRegistry.wrap(interceptor));
