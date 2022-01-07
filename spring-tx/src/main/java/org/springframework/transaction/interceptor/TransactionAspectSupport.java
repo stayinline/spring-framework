@@ -574,10 +574,13 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 				}
 			};
 		}
-
+		// TransactionStatus 封装了事务执行的状态信息
 		TransactionStatus status = null;
 		if (txAttr != null) {
 			if (tm != null) {
+				// 根据定义好的 事务方法配置信息TransactionAttribute，通过
+				// 平台事务管理器 PlatformTransactionManager 创建事务，同时返回
+				// TransactionStatus 来记录当前的事务状态，包括已经创建的事务
 				status = tm.getTransaction(txAttr);
 			} else {
 				if (logger.isDebugEnabled()) {

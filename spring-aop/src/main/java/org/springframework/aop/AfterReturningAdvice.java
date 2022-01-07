@@ -27,19 +27,23 @@ import org.springframework.lang.Nullable;
  * @author Rod Johnson
  * @see MethodBeforeAdvice
  * @see ThrowsAdvice
+ * <p>
+ * 目标方法被执行之后会调用此方法
  */
 public interface AfterReturningAdvice extends AfterAdvice {
 
 	/**
 	 * Callback after a given method successfully returned.
+	 *
 	 * @param returnValue the value returned by the method, if any
-	 * @param method the method being invoked
-	 * @param args the arguments to the method
-	 * @param target the target of the method invocation. May be {@code null}.
+	 * @param method      the method being invoked
+	 * @param args        the arguments to the method
+	 * @param target      the target of the method invocation. May be {@code null}.
 	 * @throws Throwable if this object wishes to abort the call.
-	 * Any exception thrown will be returned to the caller if it's
-	 * allowed by the method signature. Otherwise the exception
-	 * will be wrapped as a runtime exception.
+	 *                   Any exception thrown will be returned to the caller if it's
+	 *                   allowed by the method signature. Otherwise the exception
+	 *                   will be wrapped as a runtime exception.
+	 *                   这里将目标方法的入参和返回值都带过来了，可移植性自己想要的任何处理
 	 */
 	void afterReturning(@Nullable Object returnValue, Method method, Object[] args, @Nullable Object target) throws Throwable;
 
